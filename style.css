@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: Monaco, monospace;
 }
 
 html {
@@ -9,7 +10,6 @@ html {
 }
 
 body {
-  font-family: Menlo, 'Courier New', Courier, monospace;
   color: white;
   background-color: black;
   padding: 5%;
@@ -27,24 +27,59 @@ h2 {
   text-align: center;
 }
 
+button {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button a {
+  text-decoration: none;
+}
+
 ul {
   list-style-type: none;
+  text-indent: 1em;
 }
 
 a {
   color: inherit;
 }
 
-p, div, ul, h1, h2 {
+p, ul, h1, h2, button {
   margin: 5px;
   padding: 5px;
 }
 
 .box {
+  padding: 10px;
   border: solid 1px;
-  background-color: #0c0c0c;
+  background-color: #0e0e0e;
+}
+
+img.box {
+  padding: 0;
+}
+
+div.box {
+  margin: 28px 5px 28px 5px;
+}
+
+img {
+  display: block;
+  margin: 28px auto 28px auto;
+  max-width: calc(100% - 22px);
 }
 
 ::selection {
   background: blue;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
