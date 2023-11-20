@@ -1,4 +1,4 @@
-const pinned_entry = undefined;
+const pinned_entries = [0];
 
 function doesFileExist(urlToFile) {
   var xhr = new XMLHttpRequest();
@@ -22,15 +22,6 @@ for (let i = 0; true; i++) {
   }
 }
 
-if (pinned_entry !== undefined) {
-    fetch(`entries/entry_${pinned_entry}.html`).then((res) => res.text()).then((text) => {
-    document.getElementById("pinned").innerHTML = text;
-  });
-} else {
-  document.querySelector("#top p:last-of-type").remove();
-  document.getElementById("pinned").remove();
-}
-
 document.getElementById("all-entries").addEventListener("click", () => {
   const parentElement = document.getElementById("top");
 
@@ -48,3 +39,24 @@ document.getElementById("all-entries").addEventListener("click", () => {
     parentElement.insertBefore(entryElement, parentElement.firstChild);
   }
 });
+
+for (let i = 0; i < pinned_entries.length; i++) {
+  const parentElement = document.getElementById("top");
+  const entryElement = document.createElement("div");
+  entryElement.classList.add("box");
+  entryElement.classList.add("pinned");
+  
+  if (i === 0) {
+    const sectionNameParagraphElement = document.createElement("p");
+    const sectionNameEmphasisElement = document.createElement("i");
+    sectionNameEmphasisElement.innerText = "Angeheftete Einträge:";
+
+    sectionNameParagraphElement.appendChild(sectionNameEmphasisElement);
+    parentElement.appendChild(sectionNameParagraphElement);
+  }
+
+  fetch(`entries/entry_${pinned_entries[i]}.html`).then((res) => res.text()).then((text) => {
+    entryElement.innerHTML = text;
+  });
+  parentElement.appendChild(entryElement);
+}
