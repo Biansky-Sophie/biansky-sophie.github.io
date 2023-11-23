@@ -1,4 +1,4 @@
-const pinned_entries = [0];
+let pinned_entries = [0];
 
 function doesFileExist(urlToFile) {
   var xhr = new XMLHttpRequest();
@@ -14,6 +14,8 @@ function doesFileExist(urlToFile) {
 
 for (let i = 0; true; i++) {
   if (!doesFileExist(`entries/entry_${i}.html`)) {
+    pinned_entries = pinned_entries.filter((el) => el !== i - 1);
+
     fetch(`entries/entry_${i - 1}.html`).then((res) => res.text()).then((text) => {
       document.getElementById("newest").innerHTML = text;
     });
