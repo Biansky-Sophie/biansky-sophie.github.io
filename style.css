@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+
 * {
   margin: 0;
   padding: 0;
-  font-family: Monaco, Menlo, "Ubuntu Mono", monospace;
+  font-family: "Syne Mono", "Courier New", monospace;
 }
 
 html {
@@ -13,17 +15,11 @@ body {
   color: white;
   background-color: black;
   padding: 5%;
+  font-size: 18px;
 }
 
-h1 {
+h1, h2 {
   color: white;
-  font-size: 28px;
-  text-align: center;
-}
-
-h2 {
-  color: white;
-  font-size: 20px;
   text-align: center;
 }
 
